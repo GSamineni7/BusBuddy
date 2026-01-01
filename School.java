@@ -57,7 +57,7 @@ public class School {
         buses.remove(bus);
     }
 
-    //Implementation
+    //Implementation - Additional Accessors
     public Profile findProfileByParentName(String parentName, String phoneNumber) {
         for (Profile p : profiles) {
             if ((p.getParent1().getName().equalsIgnoreCase(parentName) && p.getParent1().getPhoneNumber().equalsIgnoreCase(phoneNumber)) || (p.getParent2().getName().equalsIgnoreCase(parentName) && p.getParent2().getPhoneNumber().equalsIgnoreCase(phoneNumber))) {

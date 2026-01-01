@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class overall {
 
-    //Menus
+    //Menus for different user types
     public static void printSchoolMenu(){
         System.out.println("--------------------------");
         System.out.println("1. Add New Family (Student + Adults)");
@@ -31,7 +31,7 @@ public class overall {
         System.out.println("--------------------------");
         System.out.print("Please enter your choice: ");
     }
-    //Backend Logic
+    //Backend Logic to accdess information
     private static ArrayList<School> schools = new ArrayList<>();
     private static ArrayList<Company> companies = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class overall {
         while (true) {
             System.out.print("\n-------------------------- \nEnter 1 for school menu \nEnter 2 for adult notifications \nEnter 3 for bus driver \nEnter 4 for Administrator\n--------------------------\nPlease enter your choice: ");
             int choice = input.nextInt();
-            if (choice == 1) {
+            if (choice == 1) {//School Menu
                 System.out.print("Enter school name: ");
                 input.nextLine();  // Consume newline
                 String schoolName = input.nextLine();
@@ -77,9 +77,9 @@ public class overall {
                     while (true) {
                         printSchoolMenu();
                         int schoolChoice = input.nextInt();
-                        if (schoolChoice == -1) {
+                        if (schoolChoice == -1) {//Exit School Menu
                             break;
-                        }else if (schoolChoice==1){
+                        }else if (schoolChoice==1){//Add New Family
                             System.out.print("Enter Student Name: ");
                             input.nextLine();  // Consume newline
                             String studentName = input.nextLine();
@@ -108,7 +108,7 @@ public class overall {
                             }else{
                                 System.out.println("Bus number not found. Please try again.");
                             }
-                        }else if(schoolChoice==2){
+                        }else if(schoolChoice==2){//Add a Student
                             System.out.print("Enter Adult Name: ");
                             input.nextLine();  // Consume newline
                             String parent1Name = input.nextLine();
@@ -134,7 +134,7 @@ public class overall {
                                     System.out.println("Bus Number not found. Please try again.");
                                 }
                             }
-                        }else if(schoolChoice==3){
+                        }else if(schoolChoice==3){//Change Adult Info
                             System.out.print("Enter Adult Name to change: ");
                             input.nextLine();  // Consume newline
                             String adultName = input.nextLine();
@@ -162,7 +162,7 @@ public class overall {
                                     System.out.println("Adult 2 info updated successfully!");
                                 }
                             }
-                        }else if(schoolChoice==4){
+                        }else if(schoolChoice==4){//Change Student Info
                             System.out.print("Enter Student Name to change: ");
                             input.nextLine();  // Consume newline
                             String studentName = input.nextLine();
@@ -200,7 +200,7 @@ public class overall {
                                     }
                                 }
                             }
-                        }else if(schoolChoice==5){
+                        }else if(schoolChoice==5){//Remove Student
                             System.out.print("Enter Student Name to remove: ");
                             input.nextLine();  // Consume newline
                             String studentName = input.nextLine();
@@ -215,13 +215,13 @@ public class overall {
                                 s.findBusByNumber(toRemove.getBusNumber()).removeStudentPin(toRemove.getPin());
                                 System.out.println("Student removed successfully!");   
                             } 
-                        }else if(schoolChoice==6){
+                        }else if(schoolChoice==6){//Add Bus
                             System.out.print("Enter Bus Number: ");
                             int busNumber = input.nextInt();
                             Bus newBus = new Bus(busNumber, s, s.getCompany());
                             s.addBus(newBus);
                             System.out.println("Bus added successfully!");
-                        }else if(schoolChoice==7){
+                        }else if(schoolChoice==7){//Remove Bus
                             System.out.print("Enter Bus Number to remove: ");
                             int busNumber = input.nextInt();
                             Bus b = s.findBusByNumber(busNumber);
@@ -233,7 +233,7 @@ public class overall {
                                 s.removeBus(b);
                                 System.out.println("Bus removed successfully!");
                             }
-                        }else if (schoolChoice == 8){
+                        }else if (schoolChoice == 8){//View Student & Adult Info
                             System.out.println("View Student & Adult Info");
                             System.out.println("Student Name | Adult 1 Name | Adult 1 Phone | Adult 2 Name | Adult 2 Phone | Student Bus Number | Student Pin");
                             for (Profile p : s.getProfiles()){
@@ -241,7 +241,7 @@ public class overall {
                                     System.out.println(st.getName() + " | " + p.getParent1().getName() + " | " + p.getParent1().getPhoneNumber() + " | " + p.getParent2().getName() + " | " + p.getParent2().getPhoneNumber() + " | " + st.getBusNumber() + " | " + st.getPin()); 
                                 }
                             }
-                        }else if (schoolChoice == 9){
+                        }else if (schoolChoice == 9){//Send Notification to Adults
                             System.out.print("Enter message to send to all adults: ");
                             input.nextLine();  // Consume newline
                             String message = input.nextLine();
@@ -250,12 +250,12 @@ public class overall {
                                 p.getParent2().addNotification(message);
                             }
                             System.out.println("Notifications sent to all adults in the school.");
-                        }else{
+                        }else{//Invalid Choice
                             System.out.println("Invalid choice. Please try again.");
                         }
                     }
                 }
-            }else if (choice == 2) {
+            }else if (choice == 2) {//Adult Notifications
                 System.out.print("Enter School Name: ");
                 input.nextLine();  // Consume newline
                 String schoolName = input.nextLine();
@@ -280,7 +280,7 @@ public class overall {
                         }
                     }
                 }
-            }else if (choice == 3) {
+            }else if (choice == 3) {//Bus Driver
                 System.out.print("Enter School Name: ");
                 input.nextLine();  // Consume newline
                 String schoolName = input.nextLine();
@@ -315,20 +315,20 @@ public class overall {
                         
                     }
                 }
-            }else if (choice == 4){
+            }else if (choice == 4){//Administrator Menu
                 while (true){
                     printAdminMenu();
                     int adminChoice = input.nextInt();
-                    if (adminChoice == -1){
+                    if (adminChoice == -1){//Exit Admin Menu
                         break;
-                    }else if (adminChoice==1){
+                    }else if (adminChoice==1){//Add Company
                         System.out.print("Enter Company Name: ");
                         input.nextLine();  // Consume newline
                         String companyName = input.nextLine();
                         Company newCompany = new Company(companyName);
                         companies.add(newCompany);
                         System.out.println("Company added successfully!");
-                    }else if (adminChoice==2){
+                    }else if (adminChoice==2){//Add School
                         System.out.print("Enter School Name: ");
                         input.nextLine();  // Consume newline
                         String schoolName = input.nextLine();
@@ -343,7 +343,7 @@ public class overall {
                             addSchool(newSchool, company);
                             System.out.println("School added successfully!");
                         }
-                    }else if (adminChoice==3){
+                    }else if (adminChoice==3){//Remove Company
                         System.out.print("Enter Company Name to remove: ");
                         input.nextLine();  // Consume newline
                         String companyName = input.nextLine();
@@ -356,7 +356,7 @@ public class overall {
                             companies.remove(company);
                             System.out.println("Company removed successfully!");
                         }
-                    }else if (adminChoice==4){
+                    }else if (adminChoice==4){//Remove School
                         System.out.print("Enter School Name to remove: ");
                         input.nextLine();  // Consume newline
                         String schoolName = input.nextLine();
@@ -371,7 +371,7 @@ public class overall {
                             schools.remove(school);
                             System.out.println("School removed successfully!");
                         }
-                    }else if (adminChoice==5){
+                    }else if (adminChoice==5){//View Schools by Company
                         System.out.print("Enter Company Name to view its schools: ");
                         input.nextLine();  // Consume newline
                         String companyName = input.nextLine();
@@ -383,15 +383,15 @@ public class overall {
                             System.out.println("Schools under company " + company.getName() + ":");
                             for (School sch : schools){
                                 if (sch.getCompany().getName().equalsIgnoreCase(company.getName())){
-                                    System.out.println("School Name: " + sch.getName());
+                                    System.out.println("- " + sch.getName());
                                 }
                             }
                         }
-                    }else{
+                    }else{//Invalid Choice
                         System.out.println("Invalid choice. Please try again.");
                     }
                 }
-            }else{
+            }else{//Invalid Choice
                 System.out.println("Invalid choice. Please try again.");
             }
         }

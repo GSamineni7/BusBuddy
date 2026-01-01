@@ -40,7 +40,7 @@ public class Profile {
         return students;
     }
 
-    //Implementation
+    //Implementation - Additional Accessors
     public Student getStudentByName(String name, int pin) {
         for (Student s : students) {
             if (s.getName().equalsIgnoreCase(name) && s.getPin() == pin) {
