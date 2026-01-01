@@ -146,7 +146,7 @@ public class overall {
                                 System.out.println("Adult not found. Please try again.");
                             }else{
                                 System.out.print("Enter Student Name: ");
-                                input.nextLine();  // Consume newline
+                                //input.nextLine();  // Consume newline
                                 String studentName = input.nextLine();
                                 System.out.print("Enter Bus Number: ");
                                 int busNumber = input.nextInt();
@@ -404,7 +404,7 @@ public class overall {
                         String companyName = input.nextLine();
                         Company company = findCompanyByName(companyName);
                         if (company == null) {
-                            System.out.print("Company not found. Please try again.");
+                            System.out.println("Company not found. Please try again.");
                             continue;
                         }else{
                             System.out.println("Schools under " + company.getName() + ":");
