@@ -59,33 +59,6 @@ public class overall {
     }
 
     public static void main(String[] args) {
-        
-        //Create Companies here
-        Company c1 = new Company("M & J Transportation");
-        companies.add(c1);
-        Company c2 = new Company("Specialty Transportation");
-        companies.add(c2);
-        
-        //Create Schools here
-        School s1 = new School("Farmington High School", c1);
-        addSchool(s1, c1);
-
-        School s2 = new School("West Woods Upper Elementary School", c1);
-        addSchool(s2, c1);
-
-        School s3 = new School("Irving A Robbins Middle School", c1);
-        addSchool(s3, c1);
-
-        School s4 = new School("East Farms Elementary School", c2);
-        addSchool(s4, c2);
-
-        School s5 = new School ("Union Elementary School", c2);
-        addSchool(s5, c2);
-
-        School s6 = new School("Noah Wallace Elementary School", c2);
-        addSchool(s6, c2);
-
-
         //Frontend Logic
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to the School Bus Management System!");
@@ -407,10 +380,10 @@ public class overall {
                             System.out.println("Company not found. Please try again.");
                             continue;
                         }else{
-                            System.out.println("Schools under " + company.getName() + ":");
+                            System.out.println("Schools under company " + company.getName() + ":");
                             for (School sch : schools){
                                 if (sch.getCompany().getName().equalsIgnoreCase(company.getName())){
-                                    System.out.println("- " + sch.getName());
+                                    System.out.println("School Name: " + sch.getName());
                                 }
                             }
                         }
