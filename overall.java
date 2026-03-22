@@ -63,7 +63,7 @@ public class overall {
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to the School Bus Management System!");
         while (true) {
-            System.out.print("\n-------------------------- \nEnter 1 for school menu \nEnter 2 for adult notifications \nEnter 3 for bus driver \nEnter 4 for Administrator\n--------------------------\nPlease enter your choice: ");
+            System.out.print("\n-------------------------- \nEnter 1 for school menu \nEnter 2 for adult notifications \nEnter 3 for bus driver \nEnter 4 for administrator\n--------------------------\nPlease enter your choice: ");
             int choice = input.nextInt();
             if (choice == 1) {//School Menu
                 System.out.print("Enter school name: ");
@@ -336,7 +336,7 @@ public class overall {
                         String companyName = input.nextLine();
                         Company company = findCompanyByName(companyName);
                         if (company == null) {
-                            System.out.print("Company not found. Please try again.");
+                            System.out.println("Company not found. Please try again.");
                             continue;
                         }else{
                             School newSchool = new School(schoolName, company);
